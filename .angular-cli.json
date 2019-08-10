@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "csa",
       "styles": [
-        "styles.scss"
+        "styles.scss",      
+        "vendors/bootstrap/bootstrap.min.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
