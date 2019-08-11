@@ -16,12 +16,16 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+<!--       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-        <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
-        <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>        
-        <a routerLink="profile" *ngIf="auth.loggedIn">Profile</a>
-      </form>
-    </div>
+        
+      </form> -->
+      <span class="my-2 my-lg-1"  *ngIf="user$ | async as user" >
+          <button class="btn btn-link my-2 my-sm-0" (click)="login()"*ngIf="!user.loggedIn">Log In</button>         
+          <img alt="Profile" class="img-thumbnail" id="profileIcon" src="{{user.picture}}" style="user-select: auto;"/>
+          <button [routerLink]="['/profile']" class="btn btn-link my-2 my-sm-0" *ngIf="user.loggedIn">Welcome, {{user.name}}!</button>                       
+          <button class="btn btn-link my-2 my-sm-0"(click)="logout()" *ngIf="user.loggedIn">Log Out</button> 
+        </span>
+      </div>
   </nav>

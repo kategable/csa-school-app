@@ -5,6 +5,11 @@ import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+
+import {  Store } from '@ngrx/store';
+import { State } from './store/reducers/reducer';
+import * as StoreActions from './store/actions/actions'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +41,7 @@ export class AuthService {
   // Create a local property for login status
   loggedIn: boolean = null;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private store: Store<State>) { }
   
   // getUser$() is a method because options can be passed if desired
   // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#getuser
@@ -65,9 +70,12 @@ export class AuthService {
       // Set subjects appropriately
       if (response) {
         const user = response;
+        user["loggedIn"] = true;
         this.userProfileSubject$.next(user);
+        this.store.dispatch(new StoreActions.UserChanged(user));
       }
-      this.loggedIn = !!response;
+      this.loggedIn = !!response;     
+     // this.store.dispatch(new StoreActions.UserChanged({loggedIn: this.loggedIn}));
       // Clean up subscription
       checkAuthSub.unsubscribe();
     });
@@ -111,8 +119,11 @@ export class AuthService {
     // Response will be an array of user and login status
     authComplete$.subscribe(([user, loggedIn]) => {
       // Update subjects and loggedIn property
+      user.loggedIn = loggedIn;
       this.userProfileSubject$.next(user);
       this.loggedIn = loggedIn;
+      this.store.dispatch(new StoreActions.UserChanged(user));
+
       // Redirect to target route after callback processing
       this.router.navigate([targetRoute]);
     });
