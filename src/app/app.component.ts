@@ -10,11 +10,6 @@ import { User } from './models/user.model';
 })
 export class AppComponent {
   title = 'csa-school-app';
-  user$: Observable<User>;
-
-  constructor(private userFacade: UserFacadeService) {
-  this.user$ = userFacade.user$;
-
-  }
+  
 
 }

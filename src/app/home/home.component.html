@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to CSA!</h1>
+  <p class="lead">Tracking school events better with CSA School App</p>
+  <hr class="my-4">
+  <div *ngIf="user$ | async as user " class="row">
+    <div *ngIf="!user.loggedIn " class="column">
+      <p class="row">For more information or sign up click on Learn more</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+    <a [routerLink]="['/dashboard']" *ngIf="user.loggedIn" class="btn btn-primary btn-lg" href="#" role="button">My
+      school events</a>
+  </div>
+</div>
+<div class="card">
+
+  <div class="card-body">
+    <img scr="" />
+    <h5 class="card-title">Woodview 2018 Event</h5>
+    <p class="card-text">Our passed events were a big hit</p>
+    <a href="#" class="btn btn-primary">Happy faces here</a>
+  </div>
+</div>

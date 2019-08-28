@@ -17,6 +17,7 @@ import { DashboardComponent } from './administration/dashboard/dashboard.compone
 import { storeFreeze } from 'ngrx-store-freeze';
 import { State } from './store/index';
 import { NgrxRouterStoreModule } from './store/reducers/router';
+import { HomeComponent } from './home/home.component';
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze]: [];
@@ -27,7 +28,8 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [sto
     NavbarComponent,
     CallbackComponent,
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent
   ],
   imports: [
     NgrxRouterStoreModule,

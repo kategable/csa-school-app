@@ -4,6 +4,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './administration/dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,canActivate: [AuthGuard]
+  }
+  ,
+  {
+    path: '',
+    component: HomeComponent
   }
 ];
 
