@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import {  Store } from '@ngrx/store';
-import { State } from '../store/reducers/reducer';
-import * as StoreActions from '../store/actions/actions'
-import { selectUserContext } from '../store';
 import { Observable } from 'rxjs';
-import { User } from '../model/user.model';
+import { User } from '../models/user.model';
+import { UserFacadeService } from '../services/user-facade.service';
 @Component({
   selector: 'csa-navbar',
   templateUrl: './navbar.component.html',
@@ -14,19 +10,19 @@ import { User } from '../model/user.model';
 export class NavbarComponent implements OnInit {
   user$: Observable<User>;
 
-  constructor(private store: Store<State>) { }
+  constructor(private userFacade: UserFacadeService) { }
 
   ngOnInit() {
-   
-   this.user$ =  this.store.select(selectUserContext);
+
+   this.user$ =  this.userFacade.user$;
    this.user$.subscribe(d=> console.log(d))
-  
+
   }
   login(){
-    this.store.dispatch(new StoreActions.Login())
+    this.userFacade.login();
   }
   logout(){
-    this.store.dispatch(new StoreActions.Logout())
+    this.userFacade.logout();
 
   }
 

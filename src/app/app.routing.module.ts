@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { DashboardComponent } from './administration/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,canActivate: [AuthGuard]
   }
 ];
 

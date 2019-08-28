@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { UserFacadeService } from './services/user-facade.service';
+import { Observable } from 'rxjs';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'csa-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'csa-school-app';
+  user$: Observable<User>;
+
+  constructor(private userFacade: UserFacadeService) {
+  this.user$ = userFacade.user$;
+
+  }
+
 }

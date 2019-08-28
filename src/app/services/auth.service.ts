@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 
 import {  Store } from '@ngrx/store';
-import { State } from './store/reducers/reducer';
-import * as StoreActions from './store/actions/actions'
+import { State } from '../store/reducers/reducer';
+import * as StoreActions from '../store/actions/actions'
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +42,7 @@ export class AuthService {
   loggedIn: boolean = null;
 
   constructor(private router: Router,private store: Store<State>) { }
-  
+
   // getUser$() is a method because options can be passed if desired
   // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#getuser
   getUser$(options?): Observable<any> {
@@ -69,12 +69,13 @@ export class AuthService {
       // If not authenticated, response will be 'false'
       // Set subjects appropriately
       if (response) {
+        console.log("")
         const user = response;
         user["loggedIn"] = true;
         this.userProfileSubject$.next(user);
         this.store.dispatch(new StoreActions.UserChanged(user));
       }
-      this.loggedIn = !!response;     
+      this.loggedIn = !!response;
      // this.store.dispatch(new StoreActions.UserChanged({loggedIn: this.loggedIn}));
       // Clean up subscription
       checkAuthSub.unsubscribe();
@@ -120,6 +121,7 @@ export class AuthService {
     authComplete$.subscribe(([user, loggedIn]) => {
       // Update subjects and loggedIn property
       user.loggedIn = loggedIn;
+      console.log("")
       this.userProfileSubject$.next(user);
       this.loggedIn = loggedIn;
       this.store.dispatch(new StoreActions.UserChanged(user));

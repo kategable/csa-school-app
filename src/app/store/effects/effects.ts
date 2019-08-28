@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as appActions from '../actions/actions'
 import { map } from 'rxjs/operators';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Injectable()
 export class Effects {
     constructor(private actions$: Actions, private auth: AuthService) {
-        this.auth.localAuthSetup();       
+        this.auth.localAuthSetup();
     }
 
     @Effect({ dispatch: false })
