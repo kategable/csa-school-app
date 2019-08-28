@@ -12,7 +12,7 @@ export class AdminfacadeService {
   createYear(year: { id: number; name: string; description: string; }) {
     //this.store.createYear
   }
-  years$: Observable<any>;
+  public years$: Observable<any>;
 
   constructor(private store: Store<State>) {
     this.store.dispatch(new StoreActions.LoadYearsForUser())

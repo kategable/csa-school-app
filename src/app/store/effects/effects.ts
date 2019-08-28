@@ -26,8 +26,11 @@ export class Effects {
     @Effect({ dispatch: false })
     yearsForUser$ = this.actions$.pipe(
         ofType<appActions.LoadYearsForUser>(appActions.ActionTypes.LoadYearsForUser),
-        exhaustMap(() => this.adminService.getYears().pipe(
-          map(data =>new appActions.YearsForUser(data)
+        map(() => this.adminService.getYears().pipe(
+          map((data) =>{
+            console.log(data);
+            return new appActions.YearsForUser(data)
+          }
           ))));
 
 }
