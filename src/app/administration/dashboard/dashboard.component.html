@@ -1,1 +1,6 @@
-<p>dashboard works!</p>
+<div class="container-fluid">
+ <button (click)="add()" type="button" class="btn btn-primary"><fa name="plus"></fa> School Year</button>
+ <div *ngFor="let year of years$ | async as years">
+  <p>{{year.name }}</p>
+ </div>
+</div>

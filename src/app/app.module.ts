@@ -18,6 +18,10 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { State } from './store/index';
 import { NgrxRouterStoreModule } from './store/reducers/router';
 import { HomeComponent } from './home/home.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DataService } from './services/data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze]: [];
@@ -39,7 +43,10 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [sto
     StoreModule.forRoot(fromRoot.reducers, {metaReducers}),
     EffectsModule.forRoot([RootEffects]),
     //StoreModule.forFeature('something', fromS omehting.reducers),
-    StoreDevtoolsModule.instrument({maxAge :25, logOnly: !environment.production })
+    StoreDevtoolsModule.instrument({maxAge :25, logOnly: !environment.production }),
+    AngularFontAwesomeModule,
+    HttpClientModule ,
+    InMemoryWebApiModule.forRoot(DataService)
   ],
   providers: [],
   bootstrap: [AppComponent]

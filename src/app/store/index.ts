@@ -11,3 +11,6 @@ export const reducers:ActionReducerMap<State>= {
 const getAppState = createFeatureSelector<fromFeatures.State>('csaApp')
 
 export const selectUserContext = createSelector(getAppState, (state)=>state.user)
+
+export const getYearsForUser = createSelector(getAppState, (state)=>state.years)
+export const getSchoolsForUser = createSelector(getAppState, (state)=>state.schools)
