@@ -9,21 +9,17 @@ import { UserFacadeService } from '../services/user-facade.service';
 })
 export class NavbarComponent implements OnInit {
   user$: Observable<User>;
-
+  isNavbarCollapsed: boolean = true;
   constructor(private userFacade: UserFacadeService) { }
 
   ngOnInit() {
-
    this.user$ =  this.userFacade.user$;
-   this.user$.subscribe(d=> console.log(d))
-
   }
   login(){
     this.userFacade.login();
   }
   logout(){
     this.userFacade.logout();
-
   }
 
 }

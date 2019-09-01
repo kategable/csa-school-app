@@ -74,6 +74,7 @@ export class AuthService {
         user["loggedIn"] = true;
         this.userProfileSubject$.next(user);
         this.store.dispatch(new StoreActions.UserChanged(user));
+        this.store.dispatch(new StoreActions.LoadEventsForUser());
       }
       this.loggedIn = !!response;
      // this.store.dispatch(new StoreActions.UserChanged({loggedIn: this.loggedIn}));
@@ -125,7 +126,7 @@ export class AuthService {
       this.userProfileSubject$.next(user);
       this.loggedIn = loggedIn;
       this.store.dispatch(new StoreActions.UserChanged(user));
-
+      this.store.dispatch(new StoreActions.LoadEventsForUser());
       // Redirect to target route after callback processing
       this.router.navigate([targetRoute]);
     });

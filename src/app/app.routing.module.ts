@@ -5,6 +5,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './administration/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { EventsComponent } from './administration/events/events.component';
+import { StudentsComponent } from './administration/students/students.component';
+import { TeachersComponent } from './administration/teachers/teachers.component';
+import { SchedulesComponent } from './administration/schedules/schedules.component';
+import { SessionsComponent } from './administration/sessions/sessions.component';
 
 
 const routes: Routes = [
@@ -24,7 +29,36 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-  }
+  },
+  {
+    path: 'events/:id',
+    component: EventsComponent,canActivate: [AuthGuard]
+   }
+   ,
+  {
+    path: 'students/:id',
+    component: StudentsComponent,canActivate: [AuthGuard]
+   }
+   ,
+  {
+    path: 'teachers/:id',
+    component: TeachersComponent,canActivate: [AuthGuard]
+   }
+   ,
+  {
+    path: 'schedules/:id',
+    component: SchedulesComponent,canActivate: [AuthGuard]
+   }
+   ,
+   {
+     path: 'sessions/:id',
+     component: SessionsComponent,canActivate: [AuthGuard]
+    }
+    ,
+    {
+      path: 'choices/:id',
+      component: SessionsComponent,canActivate: [AuthGuard]
+     }
 ];
 
 @NgModule({

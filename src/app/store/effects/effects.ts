@@ -23,14 +23,12 @@ export class Effects {
         map(() => this.auth.logout())
     )
 
-    @Effect({ dispatch: false })
+    @Effect()
     yearsForUser$ = this.actions$.pipe(
-        ofType<appActions.LoadYearsForUser>(appActions.ActionTypes.LoadYearsForUser),
-        map(() => this.adminService.getYears().pipe(
-          map((data) =>{
-            console.log(data);
-            return new appActions.YearsForUser(data)
-          }
-          ))));
-
+        ofType<appActions.LoadEventsForUser>(appActions.ActionTypes.LoadEventsForUser),
+        exhaustMap(() => this.adminService.getEvents().pipe(
+          map((data) =>         
+             new appActions.EventsForUser(data)
+         ))));
+  
 }

@@ -3,7 +3,8 @@ import { User } from 'src/app/models/user.model';
 
 export interface State {
   schools: any;
-  years: any;
+  events: any;
+  event: any;
   user: User
 }
 
@@ -19,7 +20,8 @@ export const initialState: State = {
     user_metadata: null
   },
   schools: null,
-  years: null
+  events: null,
+  event: null
 }
 
 export function filteredAppReducer(state = initialState, action: ActionUnion): State {
@@ -27,8 +29,11 @@ export function filteredAppReducer(state = initialState, action: ActionUnion): S
     case ActionTypes.UserChanged: {
       return { ...state, user: action.payload }
     }
-    case ActionTypes.YearsForUser: {
-      return { ...state, years: action.payload }
+    case ActionTypes.EventsForUser: {
+      return { ...state, events: action.payload }
+    }
+    case ActionTypes.SelectedEvent: {
+      return { ...state, event: action.payload }
     }
     default:
       return state;

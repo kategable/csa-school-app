@@ -12,8 +12,8 @@ export class AdminService {
   public getSchools(){
        return this.httpClient.get(this.SERVER_URL + 'schools');
   }
-  public getYears(){
-    return this.httpClient.get(this.SERVER_URL + 'years');
+  public getEvents(){ 
+    return this.httpClient.get(this.SERVER_URL + 'events');
 }
 public createYear(year: {id: number, name: string, description : string}){
   return this.httpClient.post(`${this.SERVER_URL + 'years'}`, year)

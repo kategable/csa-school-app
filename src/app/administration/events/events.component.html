@@ -1,0 +1,22 @@
+<div *ngIf="event$ | async as event">
+
+    <h1>{{event.name}}</h1>
+    <ol>
+        <li>
+            <a  [routerLink]="['/students', event.id]">Students </a><fa class=info-dot name="info-circle"></fa>
+        </li>
+        <li>
+            <a  [routerLink]="['/teachers', event.id]">Teachers</a>
+        </li>
+        <li>
+            <a  [routerLink]="['/schedules', event.id]">Schedules</a>
+        </li>
+        <li>
+            <a  [routerLink]="['/sessions', event.id]">Presentations</a>
+        </li>
+        <li>
+            <a  [routerLink]="['/choices', event.id]">Students' Choices</a>
+        </li>
+    </ol>
+ 
+</div>

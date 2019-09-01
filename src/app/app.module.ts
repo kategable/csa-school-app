@@ -22,6 +22,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EventsComponent } from './administration/events/events.component';
+import { StudentsComponent } from './administration/students/students.component';
+import { TeachersComponent } from './administration/teachers/teachers.component';
+import { SchedulesComponent } from './administration/schedules/schedules.component';
+import { SessionsComponent } from './administration/sessions/sessions.component';
+import { ChoicesComponent } from './administration/choices/choices.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze]: [];
@@ -33,7 +40,13 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [sto
     CallbackComponent,
     ProfileComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    EventsComponent,
+    StudentsComponent,
+    TeachersComponent,
+    SchedulesComponent,
+    SessionsComponent,
+    ChoicesComponent
   ],
   imports: [
     NgrxRouterStoreModule,
@@ -46,7 +59,8 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [sto
     StoreDevtoolsModule.instrument({maxAge :25, logOnly: !environment.production }),
     AngularFontAwesomeModule,
     HttpClientModule ,
-    InMemoryWebApiModule.forRoot(DataService)
+    InMemoryWebApiModule.forRoot(DataService),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
