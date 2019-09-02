@@ -4,7 +4,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { environment } from '../../environments/environment';
 
 import {  Store } from '@ngrx/store';
 import { State } from '../store/reducers/reducer';
@@ -19,7 +19,7 @@ export class AuthService {
     createAuth0Client({
       domain: "csa-app.auth0.com",
       client_id: "4xQYOZje04t1jP6g2HN8kjBxI4ahZr3Y",
-      redirect_uri: `${window.location.origin}/callback`
+      redirect_uri: `${environment.path}/callback`
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
