@@ -4,6 +4,7 @@ import * as appActions from '../actions/actions'
 import { map, exhaustMap, tap, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { AdminService } from 'src/app/services/admin.service';
+
 @Injectable()
 export class Effects {
 
@@ -26,9 +27,25 @@ export class Effects {
     @Effect()
     yearsForUser$ = this.actions$.pipe(
         ofType<appActions.LoadEventsForUser>(appActions.ActionTypes.LoadEventsForUser),
-        exhaustMap(() => this.adminService.getEvents().pipe(
+        switchMap(() => this.adminService.getEvents().pipe(
           map((data) =>         
              new appActions.EventsForUser(data)
-         ))));
-  
+         ))));  
+         @Effect()
+         loadStudents$ = this.actions$.pipe(
+             ofType<appActions.LoadStudents>(appActions.ActionTypes.LoadStudents),
+              switchMap(() => this.adminService.getStudents().pipe(
+               map((data) =>         
+                  new appActions.Students(data)
+              ))));
+         
+     
+         @Effect()
+         loadTeachers$ = this.actions$.pipe(
+             ofType<appActions.LoadTeachers >(appActions.ActionTypes.LoadTeachers ),
+            switchMap(() => this.adminService.getTeachers().pipe(
+               map((data) =>         
+                  new appActions.Teachers(data)
+              ))));
+         
 }

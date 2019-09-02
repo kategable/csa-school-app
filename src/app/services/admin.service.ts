@@ -5,6 +5,12 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class AdminService {
+    getTeachers() {
+      return this.httpClient.get(this.SERVER_URL + 'teachers');
+    }
+    getStudents() {
+      return this.httpClient.get(this.SERVER_URL + 'studetns');
+    }
 
   SERVER_URL: string = "http://localhost:8080/api/";
   constructor(private httpClient: HttpClient) { }

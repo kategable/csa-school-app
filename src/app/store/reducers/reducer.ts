@@ -2,6 +2,8 @@ import { ActionTypes, ActionUnion } from '../actions/actions'
 import { User } from 'src/app/models/user.model';
 
 export interface State {
+  teachers: any;
+  students: any;
   schools: any;
   events: any;
   event: any;
@@ -21,7 +23,9 @@ export const initialState: State = {
   },
   schools: null,
   events: null,
-  event: null
+  event: null,
+  teachers: null,
+  students: null
 }
 
 export function filteredAppReducer(state = initialState, action: ActionUnion): State {

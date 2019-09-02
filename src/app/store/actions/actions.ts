@@ -6,7 +6,11 @@ export enum ActionTypes{
     UserChanged = 'UserChanged action',
     EventsForUser = 'EventsForUser action',
     SelectedEvent = 'SelectedEvent action',
-    LoadEventsForUser = 'Load-EventsForUser action'
+    LoadEventsForUser = 'Load-EventsForUser action',
+    LoadStudents = 'Load-Students action',
+    LoadTeachers = 'Load-Teachers action',    
+    Students = 'Students action',
+    Teachers = 'Teachers action',
 }
 
 export class Login implements Action{
@@ -30,6 +34,23 @@ export class SelectedEvent implements Action{
   readonly type = ActionTypes.SelectedEvent;
   constructor(public payload: any){}
 }
+export class LoadStudents implements Action{
+  readonly type = ActionTypes.LoadStudents;
+}
+export class LoadTeachers implements Action{
+  readonly type = ActionTypes.LoadTeachers;
+}
+export class Students implements Action{
+  readonly type = ActionTypes.Students ;
+  constructor(public payload: any){}
+}
+export class Teachers implements Action{
+  readonly type = ActionTypes.Teachers;
+  constructor(public payload: any){}
+}
+
 export type ActionUnion = Login | Logout
  | UserChanged | EventsForUser 
- | LoadEventsForUser | SelectedEvent ;
+ | LoadEventsForUser | SelectedEvent
+ | LoadStudents | LoadTeachers
+ | Students | Teachers ;
