@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  path: 'http://localhost:4200'
+  path: 'http://localhost:4200',
+  callback: 'http://localhost:4200/callback',
 };
 
 /*

@@ -19,7 +19,7 @@ export class AuthService {
     createAuth0Client({
       domain: "csa-app.auth0.com",
       client_id: "4xQYOZje04t1jP6g2HN8kjBxI4ahZr3Y",
-      redirect_uri: `${environment.path}/callback`
+      redirect_uri: environment.callback
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
