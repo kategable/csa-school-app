@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {  Store } from '@ngrx/store';
-import { State } from '../store/reducers/reducer';
-import * as StoreActions from '../store/actions/actions'
-import { selectUserContext } from '../store';
+import { State } from '../root-store/reducers/reducer';
+import * as StoreActions from '../root-store/actions/actions'
+import { selectUserContext } from '../root-store';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 

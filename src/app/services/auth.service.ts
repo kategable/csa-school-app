@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 
 import {  Store } from '@ngrx/store';
-import { State } from '../store/reducers/reducer';
-import * as StoreActions from '../store/actions/actions'
+import { State } from '../root-store/reducers/reducer';
+import * as StoreActions from '../root-store/actions/actions'
 
 @Injectable({
   providedIn: 'root'
