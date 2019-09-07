@@ -13,6 +13,7 @@ export class HomeComponent {
 
   constructor(private userFacade: UserFacadeService) {
     this.user$ = userFacade.user$;
+    
     }
 
 }

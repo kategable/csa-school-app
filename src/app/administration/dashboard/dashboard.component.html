@@ -1,6 +1,6 @@
 <div class="container-fluid">
- <button (click)="add()" type="button" class="btn btn-primary"><fa name="plus"></fa> School Year</button>
- <div *ngFor="let year of years$ | async as years">
-  <p>{{year.name }}</p>
+ <button (click)="add()" type="button" class="btn btn-primary"><fa name="plus"></fa> New Event</button>
+ <div *ngFor="let event of events$ | async as events">
+  <a  [routerLink]="['/events', event.id]" >{{event.name }}</a>
  </div>
 </div>

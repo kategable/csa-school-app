@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AdminfacadeService } from './admin-facade.service';
+import { AdminFacadeService } from './admin-facade.service';
 
 describe('AdminfacadeService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: AdminfacadeService = TestBed.get(AdminfacadeService);
+    const service: AdminFacadeService = TestBed.get(AdminFacadeService);
     expect(service).toBeTruthy();
   });
 });

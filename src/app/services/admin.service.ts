@@ -5,6 +5,12 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class AdminService {
+    getTeachers() {
+      return this.httpClient.get(this.SERVER_URL + 'teachers');
+    }
+    getStudents() {
+      return this.httpClient.get(this.SERVER_URL + 'studetns');
+    }
 
   SERVER_URL: string = "http://localhost:8080/api/";
   constructor(private httpClient: HttpClient) { }
@@ -12,8 +18,8 @@ export class AdminService {
   public getSchools(){
        return this.httpClient.get(this.SERVER_URL + 'schools');
   }
-  public getYears(){
-    return this.httpClient.get(this.SERVER_URL + 'years');
+  public getEvents(){ 
+    return this.httpClient.get(this.SERVER_URL + 'events');
 }
 public createYear(year: {id: number, name: string, description : string}){
   return this.httpClient.post(`${this.SERVER_URL + 'years'}`, year)

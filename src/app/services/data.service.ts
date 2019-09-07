@@ -9,8 +9,8 @@ export class DataService implements InMemoryDbService{
   constructor() { }
   createDb(){
 
-   let  years =  [
-    {  id:  1,  name:  '2019-20', description: 'some'  },
+   let  events =  [
+    {  id:  1,  name:  '2019-20 Exploration Day', description: 'Explorations day event May 15th'  },
     {  id:  2,  name:  '2018-19', description: 'some'  },
     {  id:  3,  name:  '2017-18', description: 'some'  },
     {  id:  4,  name:  '2018-17', description: 'some'  },
@@ -24,7 +24,7 @@ export class DataService implements InMemoryDbService{
 
    ];
 
-   return {years};
+   return {events};
 
   }
 }

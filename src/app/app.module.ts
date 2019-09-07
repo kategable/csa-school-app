@@ -15,6 +15,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EventsComponent } from './administration/events/events.component';
+import { StudentsComponent } from './administration/students/students.component';
+import { TeachersComponent } from './administration/teachers/teachers.component';
+import { SchedulesComponent } from './administration/schedules/schedules.component';
+import { SessionsComponent } from './administration/sessions/sessions.component';
+import { ChoicesComponent } from './administration/choices/choices.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RootStoreModule } from './root-store/root-store-module';
 
 
@@ -26,7 +33,13 @@ import { RootStoreModule } from './root-store/root-store-module';
     CallbackComponent,
     ProfileComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    EventsComponent,
+    StudentsComponent,
+    TeachersComponent,
+    SchedulesComponent,
+    SessionsComponent,
+    ChoicesComponent
   ],
   imports: [
     NgrxRouterStoreModule,
@@ -36,6 +49,8 @@ import { RootStoreModule } from './root-store/root-store-module';
     StoreDevtoolsModule.instrument({maxAge :25, logOnly: !environment.production }),
     AngularFontAwesomeModule,
     HttpClientModule ,
+    InMemoryWebApiModule.forRoot(DataService),
+    ReactiveFormsModule
     InMemoryWebApiModule.forRoot(DataService),
     RootStoreModule
   ],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AdminfacadeService } from 'src/app/services/admin-facade.service';
+import { AdminFacadeService,UserFacadeService } from 'src/app/services';
 
 @Component({
   selector: 'csa-dashboard',
@@ -9,14 +9,13 @@ import { AdminfacadeService } from 'src/app/services/admin-facade.service';
 })
 export class DashboardComponent implements OnInit {
   //schools$: any;
-  years$: Observable<any>;
+  events$: Observable<any>;
 
-  constructor(private adminFacadeService: AdminfacadeService) { }
+  constructor(private adminFacadeService: AdminFacadeService, private userFacade: UserFacadeService) { }
 
   ngOnInit() {
-    // this.schools$ = this.schoolService.getSchools();
-    this.years$ = this.adminFacadeService.years$;
-    this.years$.subscribe(s=>console.log(s))
+ 
+    this.events$ = this.adminFacadeService.events$; 
   }
   add() {
     //this.adminFacadeService.createYear({ id: 11, name: "123123", description: "somesds" }) ;
