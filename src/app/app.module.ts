@@ -50,8 +50,7 @@ import { RootStoreModule } from './root-store/root-store-module';
     AngularFontAwesomeModule,
     HttpClientModule ,
     InMemoryWebApiModule.forRoot(DataService),
-    ReactiveFormsModule
-    InMemoryWebApiModule.forRoot(DataService),
+    ReactiveFormsModule,
     RootStoreModule
   ],
   providers: [],

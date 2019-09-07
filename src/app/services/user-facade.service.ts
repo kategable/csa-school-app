@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { State } from '../root-store/reducers/reducer';
 import * as StoreActions from '../root-store/actions/actions'
 import { selectUserContext } from '../root-store';
@@ -11,15 +11,16 @@ import { User } from '../models/user.model';
 })
 export class UserFacadeService {
 
-  public  user$: Observable<User>;
+  public user$: Observable<User>;
   constructor(private store: Store<State>) {
-    this.user$ =  this.store.select(selectUserContext);
+    this.user$ = this.store.select(selectUserContext);
   }
-  login(){
-    this.store.dispatch(new StoreActions.Login())
+  login() {
+    this.store.dispatch(new StoreActions.UserAction({ name: StoreActions.ActionTypes.Login, value: null }))
   }
-  logout(){
-    this.store.dispatch(new StoreActions.Logout())
+  logout() {
+    this.store.dispatch(new StoreActions.UserAction({ name: StoreActions.ActionTypes.Logout, value: null }))
+
 
   }
 

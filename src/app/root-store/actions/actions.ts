@@ -1,16 +1,19 @@
 import {Action} from '@ngrx/store'
 import { User } from 'src/app/models/user.model';
-export enum ActionTypes{
-    Login = 'Login action',
-    Logout = 'Logout action',
-    UserChanged = 'UserChanged action',
-    EventsForUser = 'EventsForUser action',
-    SelectedEvent = 'SelectedEvent action',
-    LoadEventsForUser = 'Load-EventsForUser action',
-    LoadStudents = 'Load-Students action',
-    LoadTeachers = 'Load-Teachers action',    
-    Students = 'Students action',
-    Teachers = 'Teachers action',
+import { ActionState } from 'src/app/models';
+export enum ActionTypes {
+  Login = 'Login action',
+  Logout = 'Logout action',
+  UserChanged = 'UserChanged action',
+  EventsForUser = 'EventsForUser action',
+  SelectedEvent = 'SelectedEvent action',
+  LoadEventsForUser = 'Load-EventsForUser action',
+  LoadStudents = 'Load-Students action',
+  LoadTeachers = 'Load-Teachers action',
+  Students = 'Students action',
+  Teachers = 'Teachers action',
+  UserAction = "UserAction",
+  SystemAction = "SystemAction"
 }
 
 export class Login implements Action{
@@ -48,9 +51,16 @@ export class Teachers implements Action{
   readonly type = ActionTypes.Teachers;
   constructor(public payload: any){}
 }
-
+export class UserAction implements Action {
+  readonly type = ActionTypes.UserAction;
+  constructor(public payload: ActionState) {}
+}
+export class SystemAction implements Action {
+  readonly type = ActionTypes.SystemAction;
+  constructor(public payload: ActionState) {}
+}
 export type ActionUnion = Login | Logout
- | UserChanged | EventsForUser 
+ | UserChanged | EventsForUser
  | LoadEventsForUser | SelectedEvent
  | LoadStudents | LoadTeachers
  | Students | Teachers ;
