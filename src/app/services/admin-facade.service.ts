@@ -1,9 +1,8 @@
 
 import { Injectable } from '@angular/core';
 import {  Store } from '@ngrx/store';
-import { State } from '../store/reducers/reducer';
-import * as StoreActions from '../store/actions/actions'
-import { getEventsForUser, getSelectedEvent } from '../store';
+import * as StoreActions from '../root-store/actions/actions'
+import { getEventsForUser, getSelectedEvent,State } from '../root-store';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class AdminFacadeService {
   public event$: Observable<any>;
 
   constructor(private store: Store<State>) {
-    
+
     this.events$ = this.store.select(getEventsForUser);
     this.event$ = this.store.select(getSelectedEvent);
   }
