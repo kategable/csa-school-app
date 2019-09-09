@@ -90,7 +90,7 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
       client.loginWithRedirect({
-        redirect_uri: `${window.location.origin}/callback`,
+        redirect_uri: environment.callback,
         appState: { target: redirectPath }
       });
     });
@@ -138,7 +138,7 @@ export class AuthService {
       // Call method to log out
       client.logout({
         client_id: "4xQYOZje04t1jP6g2HN8kjBxI4ahZr3Y",
-        returnTo: `${window.location.origin}`
+        returnTo: environment.path
       });
     });
   }
