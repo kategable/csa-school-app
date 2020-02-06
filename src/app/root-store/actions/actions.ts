@@ -1,6 +1,6 @@
-import {Action} from '@ngrx/store'
-import { User } from 'src/app/models/user.model';
+import {Action} from '@ngrx/store' 
 import { ActionState } from 'src/app/models';
+
 export enum ActionTypes {
   Login = 'Login action',
   Logout = 'Logout action',
